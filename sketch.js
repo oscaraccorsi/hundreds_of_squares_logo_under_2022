@@ -66,7 +66,7 @@ function draw() {
   background(20);
   logo.resize(windowWidth/2, 0);
   image(logo, width/2, height/2);
-  tint(50);
+  tint(100);
   imageMode(CENTER);
   rectMode(CENTER);
   
