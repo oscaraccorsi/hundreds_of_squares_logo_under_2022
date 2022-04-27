@@ -101,7 +101,7 @@ function draw() {
 function riparti() {
   clear();
   h = 1;
-  boxes = [];
+  boxes.lenght = 0;
   clear();
   setup();
 }
