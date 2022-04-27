@@ -84,6 +84,8 @@ function draw() {
     //   b.speedX = -b.speedX; 
     // }
     if (b.y < 100 || b.y > height-100) {
+      clear();
+      clear();
       riparti();
     }
     //w += 0.002
