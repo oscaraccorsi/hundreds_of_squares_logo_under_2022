@@ -99,6 +99,7 @@ function draw() {
 function riparti() {
   h = 1;
   boxes = [];
+  clear();
   setup();
 }
 
