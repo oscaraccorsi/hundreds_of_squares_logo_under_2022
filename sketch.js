@@ -29,7 +29,6 @@ function windowResized() {
 //-----------------------------------------------SETUP
 function setup() {
   createCanvas(windowWidth, windowHeight);
-  clear();
   xLogo = windowWidth-40;
   img.resize(100, 200);
   img.loadPixels();
@@ -99,9 +98,10 @@ function draw() {
   }
 }
 function riparti() {
-  clear();
   h = 1;
+  clear();
   boxes.lenght = 0;
+  background(50);
   clear();
   setup();
 }
