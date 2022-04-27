@@ -29,6 +29,7 @@ function windowResized() {
 //-----------------------------------------------SETUP
 function setup() {
   createCanvas(windowWidth, windowHeight);
+  clear();
   xLogo = windowWidth-40;
   img.resize(100, 200);
   img.loadPixels();
