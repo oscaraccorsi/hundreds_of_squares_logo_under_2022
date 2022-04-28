@@ -82,7 +82,7 @@ function draw() {
     // if (b.x < 100 || b.x > width-100) {
     //   b.speedX = -b.speedX; 
     // }
-    if (b.y < 100 || b.y > height-100) {
+    if (b.y < limitH/2 || b.y > windowHeight-limitH/2) {
       clear();
       clear();
       riparti();
@@ -98,12 +98,29 @@ function draw() {
   }
 }
 function riparti() {
-  h = 1;
-  clear();
   boxes.lenght = 0;
-  background(50);
   clear();
-  setup();
+  h = 1;
+  notSetUp();
+}
+//-------------------------------------------notSetUp
+function notSetUp() {
+   w = random(fibo);
+  limitH = random(fibo);
+  co = random(0.1, 0.01);
+  for(let i = 0; i < random(numb) ; i++) {
+    
+    //fill(random(palette));
+    noStroke();
+    
+    boxes[i] = {
+      x: random(120,width-120),
+      y: height/2,
+      speedX: random(-co, co),
+      speedY: random(-co, co),
+      col: random(palette),
+    };
+  }
 }
 
 function mousePressed() {
