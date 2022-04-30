@@ -18,7 +18,7 @@ let lowFilter;
 function preload() {
   
   drone = new Tone.Player('assets/scanner.mp3').toDestination();
-  img = loadImage(baseURLImage + 'riley6.jpeg');
+  img = loadImage(baseURLImage + 'schneiderMio.png');
   logo = loadImage(baseURLImage + 'good one white.png');
 }
 
