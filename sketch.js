@@ -1,6 +1,8 @@
 let baseURLImage = 'https://oscaraccorsi.github.io/pictures/';
 let img, logo;
-palette = [];
+let palette = [];
+let palettes = [];
+let dy, hou;
 
 let boxes = [];
 let co;
@@ -16,9 +18,25 @@ let drone;
 let lowFilter; 
 
 function preload() {
-  
   drone = new Tone.Player('assets/scanner.mp3').toDestination();
-  img = loadImage(baseURLImage + 'Rothko02.jpg');
+  
+  palettes[0] = loadImage(baseURLImage + 'riley57.jpeg');
+  palettes[1] = loadImage(baseURLImage + 'Rothko01.jpg');
+  palettes[2] = loadImage(baseURLImage + 'Rothko04.jpg');
+  palettes[3] = loadImage(baseURLImage + 'Rothko06.jpg');
+  palettes[4] = loadImage(baseURLImage + 'Rothko07.jpg');
+  palettes[5] = loadImage(baseURLImage + 'Rothko09.jpg');
+  palettes[6] = loadImage(baseURLImage + 'klee.jpg');
+  palettes[7] = loadImage(baseURLImage + 'riley5.jpeg');
+  palettes[8] = loadImage(baseURLImage + 'riley6.jpeg');
+  palettes[9] = loadImage(baseURLImage + 'veronesi04.jpeg');
+  palettes[10] = loadImage(baseURLImage + 'mond.jpg');
+  palettes[11] = loadImage(baseURLImage + 'schneiderMio.png');
+  palettes[12] = loadImage(baseURLImage + 'munariluce.png');
+  palettes[13] = loadImage(baseURLImage + 'munariluce01.png');
+  palettes[14] = loadImage(baseURLImage + 'munariluce02.png');
+  palettes[15] = loadImage(baseURLImage + 'munariluce03.png');
+  
   logo = loadImage(baseURLImage + 'good one white.png');
 }
 
@@ -30,8 +48,15 @@ function windowResized() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   xLogo = windowWidth-40;
-  img.resize(100, 200);
+  
+  dy = day()%16;
+  console.log(dy);
+  img = palettes[dy];
+  
+  img.resize(200, 0);
   img.loadPixels();
+  
+  
 //-----------------------------suono  
   drone.loop = true;
   drone.autostart = true;
