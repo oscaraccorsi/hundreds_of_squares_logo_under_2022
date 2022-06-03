@@ -18,8 +18,6 @@ let drone;
 let lowFilter; 
 
 function preload() {
-  drone = new Tone.Player('assets/scanner.mp3').toDestination();
-  
   palettes[0] = loadImage(baseURLImage + 'riley57.jpeg');
   palettes[1] = loadImage(baseURLImage + 'Rothko01.jpg');
   palettes[2] = loadImage(baseURLImage + 'Rothko04.jpg');
@@ -37,7 +35,9 @@ function preload() {
   palettes[14] = loadImage(baseURLImage + 'munariluce02.png');
   palettes[15] = loadImage(baseURLImage + 'munariluce03.png');
   
+  drone = new Tone.Player('assets/scanner.mp3').toDestination();
   logo = loadImage(baseURLImage + 'good one white.png');
+  
 }
 
 function windowResized() {
