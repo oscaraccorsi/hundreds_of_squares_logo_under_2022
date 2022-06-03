@@ -58,9 +58,9 @@ function setup() {
   
   
 //-----------------------------suono  
-  drone.loop = true;
   drone.autostart = true;
-  
+  drone.loop = true;
+
 //----------------------------------palette  
   for (let i=0; i < img.pixels.length; i += 4) {
     let r = img.pixels[i]; 
