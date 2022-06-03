@@ -35,8 +35,10 @@ function preload() {
   palettes[14] = loadImage(baseURLImage + 'munariluce02.png');
   palettes[15] = loadImage(baseURLImage + 'munariluce03.png');
   
-  drone = new Tone.Player('https://github.com/oscaraccorsi/mp3_files/scanner.mp3').toDestination();
   logo = loadImage(baseURLImage + 'good one white.png');
+  
+  
+  drone = new Tone.Player('https://github.com/oscaraccorsi/mp3_files/scanner.mp3').toDestination();
   
 }
 
@@ -60,7 +62,7 @@ function setup() {
 //-----------------------------suono  
   drone.autostart = true;
   drone.loop = true;
-  drone.volume.value = 0;
+  //drone.volume.value = 0;
 
 //----------------------------------palette  
   for (let i=0; i < img.pixels.length; i += 4) {
