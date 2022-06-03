@@ -38,7 +38,7 @@ function preload() {
   logo = loadImage(baseURLImage + 'good one white.png');
   
   
-  drone = new Tone.Player('https://github.com/oscaraccorsi/mp3_files/scanner.mp3').toDestination();
+  drone = new Tone.Player('assets/scanner.mp3').toDestination();
   
 }
 
