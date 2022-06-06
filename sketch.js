@@ -1,7 +1,24 @@
-let baseURLImage = 'https://oscaraccorsi.github.io/pictures/';
+let baseUrlPictures = 'https://oscaraccorsi.github.io/pictures/';
 let img, logo;
 let palette = [];
 let palettes = [];
+let pictureList = ['riley57.jpeg', 
+                   'Rothko01.jpg', 
+                   'Rothko04.jpg', 
+                   'Rothko06.jpg',
+                   'Rothko07.jpg', 
+                   'Rothko09.jpg', 
+                   'klee.jpg',  
+                   'riley5.jpeg', 
+                   'riley6.jpeg',
+                   'veronesi04.jpeg',
+                   'mond.jpg', 
+                   'schneiderMio.png',
+                   'munariluce.png',
+                   'munariluce.png', 
+                   'munariluce02.png',
+                   'munariluce03.png'];
+
 let dy, hou;
 
 let boxes = [];
@@ -10,7 +27,7 @@ let numb = [25, 50, 100, 200];
 
 let fibo = [55, 89, 144, 233]
 let w;
-let h = 1;
+let h;
 
 let limitW, limitH;
 
@@ -18,27 +35,10 @@ let drone;
 let lowFilter; 
 
 function preload() {
-  palettes[0] = loadImage(baseURLImage + 'riley57.jpeg');
-  palettes[1] = loadImage(baseURLImage + 'Rothko01.jpg');
-  palettes[2] = loadImage(baseURLImage + 'Rothko04.jpg');
-  palettes[3] = loadImage(baseURLImage + 'Rothko06.jpg');
-  palettes[4] = loadImage(baseURLImage + 'Rothko07.jpg');
-  palettes[5] = loadImage(baseURLImage + 'Rothko09.jpg');
-  palettes[6] = loadImage(baseURLImage + 'klee.jpg');
-  palettes[7] = loadImage(baseURLImage + 'riley5.jpeg');
-  palettes[8] = loadImage(baseURLImage + 'riley6.jpeg');
-  palettes[9] = loadImage(baseURLImage + 'veronesi04.jpeg');
-  palettes[10] = loadImage(baseURLImage + 'mond.jpg');
-  palettes[11] = loadImage(baseURLImage + 'schneiderMio.png');
-  palettes[12] = loadImage(baseURLImage + 'munariluce.png');
-  palettes[13] = loadImage(baseURLImage + 'munariluce01.png');
-  palettes[14] = loadImage(baseURLImage + 'munariluce02.png');
-  palettes[15] = loadImage(baseURLImage + 'munariluce03.png');
-  
-  logo = loadImage(baseURLImage + 'good one white.png');
-  
-  
+  dy = day()%16;
+  img = loadImage(baseUrlPictures + pictureList[dy]);
   drone = new Tone.Player('assets/scanner.mp3').toDestination();
+  logo = loadImage(baseUrlPictures + 'good one white.png');  
   
 }
 
@@ -51,25 +51,23 @@ function setup() {
   createCanvas(windowWidth, windowHeight);
   xLogo = windowWidth-40;
   
-  dy = day()%16;
-  console.log(dy);
-  img = palettes[dy];
+  
   
   img.resize(200, 0);
   img.loadPixels();
   
   
 //-----------------------------suono  
-  drone.autostart = true;
   drone.loop = true;
-  //drone.volume.value = 0;
-
+  drone.autostart = true;
+  
 //----------------------------------palette  
   for (let i=0; i < img.pixels.length; i += 4) {
     let r = img.pixels[i]; 
     let g = img.pixels[i+1]; 
-    let b = img.pixels[i+2]; 
-    let c = color(r, g, b, 150);
+    let b = img.pixels[i+2];
+    let alpha = round(random(100, 150));
+    let c = color(r, g, b, alpha);
     palette.push(c);    
   }
   w = random(fibo);
@@ -102,7 +100,7 @@ function draw() {
   
   for (b of boxes) {
     fill(b.col);
-    rect(b.x, b.y, w, h, 5);
+    rect(b.x, b.y, w, dy, 5);
     
     // b.x += b.speedX;
     b.y += b.speedY;
@@ -111,9 +109,7 @@ function draw() {
     //   b.speedX = -b.speedX; 
     // }
     if (b.y < limitH/2 || b.y > windowHeight-limitH/2) {
-      clear();
-      clear();
-      riparti();
+      reloadPage();
     }
     //w += 0.002
     h += 0.002
@@ -151,6 +147,10 @@ function notSetUp() {
   }
 }
 
+function reloadPage() {
+   window.location.reload();
+}
+
 function mousePressed() {
   imageMode(CENTER);
   logo.resize(40, 0);
@@ -160,4 +160,3 @@ function mousePressed() {
   clear();
   //background(15, 15, 15);
 }
-
