@@ -66,8 +66,8 @@ function setup() {
     let r = img.pixels[i]; 
     let g = img.pixels[i+1]; 
     let b = img.pixels[i+2];
-    let alpha = round(random(100, 150));
-    let c = color(r, g, b, alpha);
+    
+    let c = color(r, g, b, 100);
     palette.push(c);    
   }
   w = random(fibo);
