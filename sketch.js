@@ -50,7 +50,7 @@ function windowResized() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   xLogo = windowWidth-40;
-  
+  setInterval(reload, 1000*60);
   
   
   img.resize(200, 0);
@@ -90,39 +90,18 @@ function setup() {
 
 //------------------------------------------DRAW
 function draw() {
-  //background(15, 15, 15);
+  
   
   rectMode(CENTER);
-  
-  // stroke(255);
-  // for(i = 0; i < boxes.lengh; i++) {
-  //   let box = boxes[i];
   
   for (b of boxes) {
     fill(b.col);
     rect(b.x, b.y, w, dy, 5);
     
-    // b.x += b.speedX;
-    b.y += b.speedY;
-
-    // if (b.x < 100 || b.x > width-100) {
-    //   b.speedX = -b.speedX; 
-    // }
-    if (b.y < limitH/2 || b.y > windowHeight-limitH/2) {
-      reloadPage();
-    }
-    //w += 0.002
-    h += 0.002
-    if (h >= limitH) {
-      h = limitH;
-    }
-    if (w >= limitW) {
-      w = limitW;
-    }
+    
+    b.y += b.speedY
   }
 }
-
-
 
 function reloadPage() {
    window.location.reload();
