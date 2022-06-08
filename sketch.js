@@ -50,7 +50,7 @@ function windowResized() {
 function setup() {
   createCanvas(windowWidth, windowHeight);
   xLogo = windowWidth-40;
-  setInterval(reloadPage, 1000*60);
+  setInterval(reloadPage, 1000*120);
   
   
   img.resize(200, 0);
