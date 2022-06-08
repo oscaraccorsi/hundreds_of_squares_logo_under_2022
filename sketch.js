@@ -67,7 +67,7 @@ function setup() {
     let g = img.pixels[i+1]; 
     let b = img.pixels[i+2];
     let alph = round(random(50, 150));
-    let c = color(r, g, b, alph);
+    let c = color(r, g, b, 100);
     palette.push(c);    
   }
   w = random(fibo);
