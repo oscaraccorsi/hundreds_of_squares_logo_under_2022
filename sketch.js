@@ -121,31 +121,8 @@ function draw() {
     }
   }
 }
-function riparti() {
-  boxes.lenght = 0;
-  clear();
-  h = 1;
-  notSetUp();
-}
-//-------------------------------------------notSetUp
-function notSetUp() {
-   w = random(fibo);
-  limitH = random(fibo);
-  co = random(0.1, 0.01);
-  for(let i = 0; i < random(numb) ; i++) {
-    
-    //fill(random(palette));
-    noStroke();
-    
-    boxes[i] = {
-      x: random(120,width-120),
-      y: height/2,
-      speedX: random(-co, co),
-      speedY: random(-co, co),
-      col: random(palette),
-    };
-  }
-}
+
+
 
 function reloadPage() {
    window.location.reload();
