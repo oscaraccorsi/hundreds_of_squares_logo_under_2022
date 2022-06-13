@@ -23,13 +23,13 @@ let dy, hou;
 
 let boxes = [];
 let co;
-let numb = [25, 50, 100, 200];
+let numb = [];
 
-let fibo = [55, 89, 144, 233]
+let fibo = [];
 let w;
 let h;
 
-let limitW, limitH;
+let limitW;
 
 let drone;
 let lowFilter; 
@@ -46,22 +46,24 @@ function windowResized() {
   resizeCanvas(windowWidth, windowHeight);
 }
 
-//-----------------------------------------------SETUP
+//--------------------------------------------------------SETUP
 function setup() {
   createCanvas(windowWidth, windowHeight);
   xLogo = windowWidth-40;
-  setInterval(reloadPage, 1000*120);
+  setInterval(reloadPage, 1000*60);
   
+//--------------------------------------------------------arrays
+  fibo = [width/10, width/8, width/6, width/4, width/3];
+  numb = [width/100, width/80, width/50, width/25, width/10];
   
   img.resize(200, 0);
   img.loadPixels();
   
-  
-//-----------------------------suono  
+//--------------------------------------------------suono  
   drone.loop = true;
   drone.autostart = true;
   
-//----------------------------------palette  
+//-------------------------------------------------palette  
   for (let i=0; i < img.pixels.length; i += 4) {
     let r = img.pixels[i]; 
     let g = img.pixels[i+1]; 
@@ -71,15 +73,13 @@ function setup() {
     palette.push(c);    
   }
   w = random(fibo);
-  limitH = random(fibo);
   co = random(0.1, 0.01);
-  for(let i = 0; i < random(numb) ; i++) {
-    
-    //fill(random(palette));
-    noStroke();
+  
+//----------------------------------------------------objects      
+  for(let i = 0; i < round(random(numb)) ; i++) {
     
     boxes[i] = {
-      x: random(120,width-120),
+      x: random(w,width-w),
       y: height/2,
       speedX: random(-co, co),
       speedY: random(-co, co),
@@ -88,25 +88,22 @@ function setup() {
   }
 }   
 
-//------------------------------------------DRAW
+//----------------------------------------------------------DRAW
 function draw() {
-  
-  
+  noStroke();
   rectMode(CENTER);
   
   for (b of boxes) {
     fill(b.col);
-    rect(b.x, b.y, w, dy, 5);
-    
-    
+    rect(b.x, b.y, w, 5, 5);
     b.y += b.speedY
   }
 }
-
+//------------------------------------reloadPage
 function reloadPage() {
    window.location.reload();
 }
-
+//--------------------------------------------mousePressed
 function mousePressed() {
   imageMode(CENTER);
   logo.resize(40, 0);
