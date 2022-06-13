@@ -54,7 +54,7 @@ function setup() {
   
 //--------------------------------------------------------arrays
   fibo = [width/10, width/8, width/6, width/4, width/3];
-  numb = [width/80, width/50, width/25, width/10];
+  numb = [width/50, width/25, width/10, width/5];
   
   img.resize(200, 0);
   img.loadPixels();
